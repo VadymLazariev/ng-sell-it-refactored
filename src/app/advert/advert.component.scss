@@ -1,0 +1,59 @@
+@import "../sass/variables";
+
+.home-page-row{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 100px 45px;
+
+}
+.column{
+  flex: 25%;
+  justify-content: space-between;
+  max-width: 25%;
+  padding: 20px 45px;
+}
+@media screen and (max-width: 800px) {
+  .column{
+    flex: 50%;
+    max-width: 50%;
+    padding: 0 4px;
+  }
+  .home-page-row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width:640px)  {
+  .column{
+    flex: 100%;
+    max-width: 100%;
+    padding:0;
+    margin-bottom: 50px;
+
+  }
+  .home-page-row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width:1024px) and (max-width: 1024px)  {
+  .column{
+    max-width: 50%;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+  .home-page-row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 50px;
+
+  }
+}
+

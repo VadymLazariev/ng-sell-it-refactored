@@ -1,0 +1,68 @@
+<main class="main">
+  <div class="main-wrap">
+    <div class="main-wrap-picture-block">
+      <img src="{{product?.images[0]?.file}}"  alt="">
+    </div>
+    <div class="main-description">
+      <h3>{{product?.theme}}</h3>
+      <div class="main-description-user-and-price">
+        <p>from
+          <span class="main-description__user">{{product?.owner?.first_name +"  "+product?.owner?.last_name}}</span >
+          <span class="main-description__price">{{product?.price + "$"}} </span></p>
+      </div>
+      <div class="main-description-paragraph">
+        <p>{{product?.text}}</p>
+        <p> {{product?.location}}</p>
+
+        <ul class="main-description-list"> Contacts:
+          <li>{{product?.owner.email}}</li>
+          <li>{{product?.owner.username}}</li>
+        </ul>
+        <p><span class="bold">{{product?.contractPrice}}</span></p>
+        <p>
+          <span class="bold">{{product?.currency}}</span><br>
+          <span>Some line</span><br>
+          <span class="italic">Some line</span>
+        </p>
+        <p><span class="bold">Finished on this line.</span></p>
+      </div>
+    </div>
+    <div class="main-chat">
+      <h3>Chat <span> with <span class="main-chat__user__name">Alis Kim</span> <span> <img src="assets/greendot.png" alt=""></span> </span> </h3>
+      <div class="main-online-chat-block">
+        <div class="main-chat-online-chat">
+          <div class="main-online-chat-message">
+            <img src="assets/aliskimsmall.png" alt="">
+            <p>One line chat message</p>
+          </div>
+          <div class="main-multiple-message-chat">
+            <p>
+              Multi line chat message. Some  text for multi line message. What is your
+              name. Oh sorry. My bad, your name I think Alis.Right? Please send me your
+              contacts. May be your facebook page or some think alse.How much cost this
+              t shirt?
+            </p>
+            <div>
+              <img src="assets/kimevanssmal.png" alt="user1 img">
+            </div>
+          </div>
+          <div class="main-send-message-area">
+            <input  type="text">
+            <img src="assets/sendmessage.png" alt="">
+          </div>
+        </div>
+        <div class="main-chat-connected" >
+          <h4>Connected</h4>
+          <div class="main-chat-connected-users">
+            <img src="assets/aliskim.png" alt="Alis Kim">
+            <p>Alis Kim</p>
+          </div>
+          <div class="main-chat-connected-users">
+            <img src="assets/kimevans.png" alt="Kim Evans">
+            <p>Kim Evans</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

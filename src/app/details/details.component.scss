@@ -1,0 +1,208 @@
+.main {
+  justify-content: center;
+  flex-wrap: wrap;
+  display: flex;
+  padding-bottom: 25px;
+}
+
+.main-wrap {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  display: flex;
+  width: 900px;
+  margin-top: 10%;
+}
+.main-wrap-picture-block{
+  overflow: hidden;
+  img{
+    height: 500px;
+    width: 500px
+  }
+}
+.main-description{
+  width: 380px;
+  color: #4a4a4a;
+  font-size: 18px;
+}
+.main-description h3{
+  font-weight: bold;
+  font-size: 32px;
+  font-family: Myriad Pro;
+  color: black;
+}
+
+.main-description-user-and-price{
+  font-weight: bold;
+}
+.main-description__user{
+  color: #00b3be;
+}
+.main-description__price{
+  color:#91d763;
+  font-size: 32px;
+  font-family: Arial;
+  margin-left: 20px;
+}
+.main-description-user-and-price p {
+  margin-top: 20px;
+}
+
+.main-description-paragraph{
+  margin-top: 20px;
+}
+.main-description-paragraph > p{
+  margin-top: 20px;
+}
+.main-description-paragraph .bold{
+  font-weight: bold;
+}
+.main-description-paragraph .italic{
+  font-style: italic;
+}
+.main-description-list{
+  font-weight: bold;
+}
+.main-description-list li{
+  margin-left: 62px;
+}
+.main-description-list > li:before{
+  content: "-";
+}
+
+.main-chat{
+  width: 100%;
+}
+.main-chat h3{
+  font-size: 25px;
+  color:#4a4a4a;
+}
+.main-chat h3 > span{
+  font-size: 15px;
+}
+.main-chat__user__name{
+  color: #00b3be;
+}
+
+.main-online-chat-block{
+  display: flex;
+  justify-content: flex-start;
+}
+.main-chat-online-chat{
+  margin-top: 108px;
+}
+.main-online-chat-message{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.main-online-chat-message img{
+  padding-right: 20px;
+}
+.main-online-chat-message p{
+  border-right: 5px solid #00b3be;
+
+}
+
+.main-multiple-message-chat{
+  justify-content: flex-end;
+  display: flex;
+  margin-top: 30px;
+  padding-left: 56px;
+  padding-right: 10px;
+
+}
+.main-multiple-message-chat p {
+  font-size: 14px;
+  border-left: 5px solid #00b3be;
+  padding-left: 10px;
+  width:500px
+}
+
+.main-send-message-area{
+  margin-top: 20px;
+}
+.main-send-message-area input{
+  border: none;
+  border-bottom: 1px solid #00b3be;
+  width: 100%;
+  height: 30px;
+}
+.main-send-message-area img{
+
+  position: relative;
+  z-index: 2;
+  float: right;
+  margin-top: -20px;
+  margin-right: 5px;
+}
+.main-chat-connected{
+
+}
+
+.main-chat-connected-users{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+}
+.main-chat-connected h4{
+  font-size: 18px;
+  color: #4a4a4a;
+
+}
+.main-chat-connected-users p{
+  color: #4a4a4a;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 16px;
+
+}
+
+@media screen and (max-width: 767px) {
+  .main .main-wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+  .main-wrap-picture-block {
+    width: 100%;
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .main .main-wrap .main-description {
+    width: 90%;
+    font-size: 14px;
+  }
+  .main-description h3, .main-description__price {
+    font-size: 24px;
+  }
+  .main-chat {
+    width: 90%;
+  }
+  .main-chat h3 {
+    font-size: 24px;
+  }
+  .main-online-chat-block {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .main-chat-online-chat {
+    width: 100%;
+  }
+  .main-online-chat-message {
+    margin-top: 25px;
+  }
+  .main-multiple-message-chat {
+    padding-left: 7%;
+  }
+  .main-chat-connected {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .main-chat-connected-users {
+    float: left;
+    width: 50%;
+  }
+}

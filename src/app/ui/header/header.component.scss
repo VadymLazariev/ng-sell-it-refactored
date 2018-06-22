@@ -1,0 +1,95 @@
+@import "../../sass/variables";
+
+
+body{
+  display: flex;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 30px;
+}
+.header{
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.user-box{
+  display: flex;
+  justify-content: space-around;
+  background-color: #00b3be;
+  height: 60px;
+  width: 25%;
+  color: white;
+  transition: height 1s;
+}
+
+.submenu{
+  display: block;
+  margin-top: 100px;
+  justify-content: space-between;
+  align-items: flex-end;
+
+}
+
+.user-box:hover {
+  height: 150px;
+  border-bottom: 2px solid black;
+  border-left: 1px solid black;
+
+}
+
+.user-box p{
+  align-self: center;
+}
+.user-image{
+  align-self: center;
+  height: 40px;
+}
+.sign-out{
+  align-self: center;
+}
+
+.input-container{
+
+}
+
+.search{
+  border: none;
+  border-bottom: 1px #00b3be solid;
+  height: 30px;
+  margin-top:3%;
+  width: 400px;
+}
+
+
+@media screen and (max-width:770px)  {
+  .search{
+    width: 150px;
+  }
+  .user-box p{
+    margin-left: 10px;
+    align-self: center;
+  }
+  .user-box {
+    width: 25%;
+  }
+  .user-image{
+    margin-left: 0;
+  }
+  .sign-out{
+    margin-right: 0;
+  }
+}
+
+
+@media screen and (max-width:480px){
+  .user-box p{
+    display: none;
+  }
+  .user-box {
+    background-color: transparent;
+    justify-content: flex-end;
+  }
+}
+
+

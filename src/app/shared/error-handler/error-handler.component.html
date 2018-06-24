@@ -1,0 +1,19 @@
+<div *ngIf="errors?.required" class="error">
+  {{formFieldName}} is required!
+</div>
+<div *ngIf="errors?.email" class="error">
+  wrong syntaxis of {{formFieldName}}
+</div>
+<div *ngIf="errors?.minlength" class="error">
+ {{formFieldName}}  should be {{errors.minlength.requiredLength}} characters long
+</div>
+<div *ngIf="errors?.maxlength" class="error">
+  {{formFieldName}} has maximum characters
+</div>
+<div *ngIf="errors?.message" class="error">
+  {{errorMessage}}
+</div>
+<div *ngIf="errors?.mismatch" class="error">
+  Passwords don't match!
+</div>
+

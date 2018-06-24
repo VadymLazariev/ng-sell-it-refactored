@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {UiModule} from "./ui/ui.module";
 import {ProductDataService} from "./core/product-data.service";
-import { DetailsComponent } from './details/details.component';
+import {AuthInterceptor} from "./core/auth.interceptor";
+import {SessionService} from "./core/session.service";
+import {AuthService} from "./core/auth.service";
+import { AddProductComponent } from './add-product/add-product.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorHandlerComponent } from './shared/error-handler/error-handler.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +24,11 @@ import { DetailsComponent } from './details/details.component';
     HttpClientModule,
     UiModule
   ],
-  providers: [ProductDataService],
+  providers: [ProductDataService, SessionService,  AuthService,   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

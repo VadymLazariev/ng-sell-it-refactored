@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {tap} from 'rxjs/operators';
+import {Cookie} from 'ng2-cookies/ng2-cookies';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SessionService} from './session.service';
 import {ProfileService} from './profile.service';
@@ -9,7 +10,6 @@ import {Observable} from "rxjs/internal/Observable";
 import {ISignUp} from "./models/isign-up";
 import {ISignIn} from "./models/isign-in";
 import {Subscription} from "rxjs/internal/Subscription";
-import {Cookie} from "ng2-cookies";
 import {ApiUrls} from "./api-urls";
 
 @Injectable()
@@ -20,7 +20,7 @@ export class AuthService {
               private http: HttpClient,
               private router: Router,
               public profileService: ProfileService,
-              ) {}
+  ) {}
 
 
   public authenticated$ = new BehaviorSubject<boolean>(this.hasToken());
@@ -38,21 +38,20 @@ export class AuthService {
         } else {
           this.authenticated$.next(true);
         }
-        this.sessionService.token = data;
-        console.log(data);
+        this.sessionService.token = data.token;
         this.sessionService.user = data.user;
         this.profileService.profile$.next(data.user);
-        this.router.navigate(['']);
+        this.router.navigate(['/advert']);
       } )
     );
   }
 
   signOut(): Subscription {
     return this.http.get(ApiUrls.logout).subscribe( () => {
-        Cookie.delete('token');
-        Cookie.delete('user');
-        this.router.navigate(['/products']);
-        this.authenticated$.next(false);
+      Cookie.delete('token');
+      Cookie.delete('user');
+      this.router.navigate(['/products']);
+      this.authenticated$.next(false);
     });
   }
 
@@ -66,11 +65,19 @@ export class AuthService {
   }
 
   verifyEmail(userKey: string): Observable<Object>  {
-      const body = {
+    const body = {
       key: userKey
     };
-      return this.http.post(ApiUrls.emailVerify, body);
+    return this.http.post(ApiUrls.emailVerify, body);
   }
 
+  googleAuthentication( token) {
+
+    const body = {
+      access_token: token,
+    };
+
+    return this.http.post(ApiUrls.authGoogle, body );
+  }
 
 }

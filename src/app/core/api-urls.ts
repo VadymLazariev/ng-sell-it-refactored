@@ -5,6 +5,7 @@ export class ApiUrls {
   static login = 'http://light-it-04.tk/api/login/';
   static logout = 'http://light-it-04.tk/api/logout/';
   static emailVerify = 'http://light-it-04.tk/api/verify-email/';
+  static authGoogle = 'http://light-it-04.tk/api/rest-auth/google/';
 
   static profile ='http://light-it-04.tk/api/profile/';
 }

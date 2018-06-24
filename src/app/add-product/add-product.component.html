@@ -1,0 +1,44 @@
+<form [formGroup]="addingProductForm" class="container" novalidate>
+  <div class="form-group">
+    <label class="center-block">Theme:
+      <input type="text" class="form-control" formControlName="theme">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Product image:
+      <input (change)="onChange($event)" type="file" multiple class="form-control" formControlName="images">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Text:
+      <textarea class="form-control" formControlName="text"></textarea>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Price:
+      <input type="text" class="form-control" formControlName="price">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Currency:
+      <input type="text" class="form-control" formControlName="currency">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Location:
+      <input type="text" class="form-control" formControlName="location">
+    </label>
+  </div>
+  <div class="checkbox">
+    <label class="center-block">
+      <input type="checkbox" formControlName="contract_price">Contract Price
+    </label>
+  </div>
+  <div class="checkbox">
+    <label class="center-block">
+      <input type="checkbox" formControlName="is_active">Active
+    </label>
+  </div>
+  <button (click)="onSubmit()" type="submit" class="btn btn-default">Submit</button>
+  <p>Form value: {{ addingProductForm.get('theme').errors| json }}</p>
+</form>

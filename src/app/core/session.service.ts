@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Cookie} from "ng2-cookies";
-
+import {Cookie} from 'ng2-cookies/ng2-cookies';
 
 @Injectable()
 export class SessionService {
+
+
   constructor() { }
 
   get token() {
-    return  Cookie.get('token');
+    return Cookie.get('token');
   }
 
   set token(value) {
@@ -19,7 +20,7 @@ export class SessionService {
   }
 
   set user(value) {
-     localStorage.setItem('token', JSON.stringify(value));
+    localStorage.setItem('token', JSON.stringify(value));
   }
 
 

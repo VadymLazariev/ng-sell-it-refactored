@@ -7,6 +7,22 @@ const routes: Routes = [
     loadChildren: './advert/advert.module#AdvertModule'
   },
   {
+    path:'login' ,
+    loadChildren: './login/login.module#LoginModule'
+  },
+  {
+    path:'profile' ,
+    loadChildren: './profile/profile.module#ProfileModule'
+  },
+  {
+    path:'add-product' ,
+    loadChildren: './add-product/add-product.module#AddProductModule'
+  },
+  {
+    path:'**',
+    loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule'
+  },
+  {
     path:'', redirectTo: 'advert', pathMatch: 'full'
   }
 ];

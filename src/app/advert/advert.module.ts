@@ -7,6 +7,8 @@ import {AdvertItemComponent} from "./advert-item/advert-item.component";
 import {ProductDataService} from "../core/product-data.service";
 import {AdvertResolve} from "../core/advert.resolve";
 import {DetailsComponent} from "../details/details.component";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptor} from "../core/auth.interceptor";
 
 @NgModule({
   imports: [
@@ -18,7 +20,8 @@ import {DetailsComponent} from "../details/details.component";
     AdvertItemComponent,
     DetailsComponent
   ],
-  providers:[ProductDataService,AdvertResolve],
+  providers:[ProductDataService,AdvertResolve,
+],
   exports:[AdvertComponent,AdvertItemComponent]
 })
 export class AdvertModule { }

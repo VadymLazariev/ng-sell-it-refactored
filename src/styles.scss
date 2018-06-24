@@ -1,7 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-html,body{
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body, html {
   height: 100%;
   margin: 0;
+}
+div{
+  display: block;
+}
+li{
+  list-style-type: none;
+}
+a{
+  color: white;
 }
 
 /*

@@ -1,0 +1,57 @@
+<div class="login-page" >
+  <div class="main-picture"></div>
+  <div class="login-content">
+    <div class="logo"><img src="assets/img/sell-it-white-logo.png" alt=""></div>
+    <button class="sign-in-btn" (click)="signInFormStatus()">Sign In</button>
+    <button class="sign-up-btn" (click)="signUpFormStatus()">Sign Up</button>
+
+    <form [formGroup]="signInForm" novalidate *ngIf="isLoginButton">
+      <input [ngClass]="{'error':signInForm.controls.email.invalid}"
+             type="email" placeholder="Email" formControlName="email">
+      <div *ngIf="signInForm.controls.email.invalid">
+        <app-error-handler [errors]="signInForm.controls.email.errors" [formFieldName]="'email'"></app-error-handler>
+      </div>
+      <input  [ngClass]="{'error':signInForm.controls.password.invalid}"
+              type="password" placeholder="Password" formControlName="password">
+      <div *ngIf="signInForm.controls.password.invalid">
+        <app-error-handler [errors]="signInForm.controls.password.errors" [formFieldName]="'password'"></app-error-handler>
+      </div>
+      <button (click)="onSubmitSignIn()" class="submit-btn" type="submit">Sign In</button>
+      <div *ngIf="errors">
+        <app-error-handler [errors]="errors" [errorMessage]="errorMessage"></app-error-handler>
+      </div>
+    </form>
+
+    <form [formGroup]="signUpForm" novalidate *ngIf="!isLoginButton">
+      <input  type="text" placeholder="Username" formControlName="username"
+              [ngClass]="{'error':signUpForm.controls.username.invalid}">
+      <div *ngIf="signUpForm.controls.username.invalid">
+        <app-error-handler [errors]="signUpForm.controls.username.errors" [formFieldName]="'username'"></app-error-handler>
+      </div>
+      <input type="email" placeholder="Email" formControlName="email"
+             [ngClass]="{'error':signUpForm.controls.email.invalid}">
+      <div *ngIf="signUpForm.controls.email.invalid">
+        <app-error-handler [errors]="signUpForm.controls.email.errors" [formFieldName]="'email'"></app-error-handler>
+      </div>
+      <div formGroupName="passwords">
+        <input type="password" placeholder="Password" formControlName="password1"
+               [ngClass]="{'error':password1.invalid}">
+        <div *ngIf="password1.invalid">
+          <app-error-handler [errors]="password1.errors" [formFieldName]="'password'"></app-error-handler>
+        </div>
+        <input type="password" placeholder="Confirm password" formControlName="password2"
+               [ngClass]="{'error':password2.invalid}">
+        <div *ngIf="password2.invalid">
+          <app-error-handler [errors]="password2.errors" [formFieldName]="'password'"></app-error-handler>
+        </div>
+        <div *ngIf="signUpForm.controls.passwords.invalid">
+          <app-error-handler [errors]="signUpForm.controls.passwords.errors" [formFieldName]="'passwords'"></app-error-handler>
+        </div>
+      </div>
+      <button (click)="onSubmitSignUp()" class="submit-btn" type="submit">Sign up</button>
+      <div *ngIf="errors">
+        <app-error-handler [errors]="errors" [errorMessage]="errorMessage"></app-error-handler>
+      </div>
+    </form>
+  </div>
+</div>

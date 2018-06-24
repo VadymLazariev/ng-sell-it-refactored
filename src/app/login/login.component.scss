@@ -1,0 +1,119 @@
+@import "../sass/variables";
+.login-page{
+  display: grid;
+  grid-template-columns: 73% 27%;
+  height: 100%;
+
+  .main-picture{
+    background-image: url("../../assets/img/login-right-section-image.png");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+}
+
+.login-content{
+  background-color: $main-color;
+
+  .logo{
+    position: relative;
+    text-align: center;
+    margin-top: 25%;
+  }
+
+}
+
+.sign-in-btn{
+  width: 45%;
+  height: 4%;
+  margin-left: 2%;
+  font-family: $main-font;
+  font-size: 100%;
+
+}
+.sign-up-btn{
+  width: 45%;
+  height: 4%;
+  margin-left: 4%;
+  font-family: $main-font;
+  font-size: 100%;
+
+}
+
+.sign-in-btn,.sing-up-btn{
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 50%;
+
+}
+
+form{
+  position: relative;
+  text-align: center;
+  margin-top: 70px;
+}
+input{
+  width: 95%;
+  height: 40px;
+  background-color: $main-color;
+  border: none;
+  border-bottom: white 3px solid;
+  color: white;
+  margin-top:40px;
+}
+.submit-btn{
+  width: 95%;
+  margin-top: 50px;
+  margin-left: 2%;
+  padding: 10px;
+}
+
+::placeholder{
+  color: white;
+  font-family: $main-font;
+  padding-left: 15px;
+}
+.login-btn{
+  width: 100%;
+}
+@media screen and (max-width: 800px){
+  .login-page{
+    grid-template-columns: 100%;
+    .main-picture{
+      display: none;
+    }
+  }
+  .login-content{
+    width: 100%;
+    height: auto;
+    .logo{
+      position: relative;
+      text-align: center;
+      img{
+        width: 50%;
+      }
+    }
+  }
+
+  .submit-btn{
+    height: 50px;
+    font-size: 25px;
+  }
+}
+
+.error{
+  color:red;
+  font-size: 15px;
+  border: red 1px solid;
+}
+.error-text{
+  color:red;
+  display: block;
+}
+
+._disabled_text{
+  display: none;
+  float:left;
+}

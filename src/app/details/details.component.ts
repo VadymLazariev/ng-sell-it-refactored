@@ -4,6 +4,7 @@ import {ProductDataService} from "../core/product-data.service";
 import {Product} from "../core/models/product";
 import {Subject} from "rxjs/internal/Subject";
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
+import {AuthService} from "../core/auth.service";
 
 @Component({
   selector: 'app-details',
@@ -15,18 +16,23 @@ export class DetailsComponent implements OnInit {
   public loading$ = new BehaviorSubject(true);
   private destroy = new Subject();
   public product: Product;
+  public authenticated$: boolean;
+
 
   constructor(
     private dataProductsService: ProductDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService:AuthService,
   ) {
   }
 
   ngOnInit() {
+    this.authService.isAuthenticated().subscribe( data => {
+      this.authenticated$ = data;
+    });
     this.route.data.subscribe(
       product => {
         this.product = product.data;
-        console.log("product: " + JSON.stringify(product.data));
       },
       err => {
         console.log(err.message);

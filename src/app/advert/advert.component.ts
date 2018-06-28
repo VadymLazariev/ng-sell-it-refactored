@@ -20,7 +20,6 @@ export class AdvertComponent implements OnInit {
     }
 
   }
-
   loadMoreProducts(){
     const limit:number = 4;
     this.productDataService.getProductList(limit,this.productList.length).subscribe((res:Product[]) =>

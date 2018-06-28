@@ -7,13 +7,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "../core/auth.service";
 import {ProfileService} from "../core/profile.service";
 import {SessionService} from "../core/session.service";
+import {UiModule} from "../ui/ui.module";
 
 @NgModule({
   imports: [
     CommonModule,
     ProfileRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UiModule
   ],
   declarations: [
     ProfileComponent,

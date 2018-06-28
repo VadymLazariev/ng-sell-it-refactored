@@ -1,0 +1,25 @@
+<div class="user-block" *ngIf="authenticated$">
+  <div class="profile">
+    <img src="{{currentUser?.avatar}}" alt="" class="profile__avatar">
+    <p class="profile__user-name">{{currentUser?.first_name}} {{currentUser?.last_name}}</p>
+    <img (click)="signOut()" src="assets/img/fa-sign-out.png" class="profile__sign-out" alt="">
+  </div>
+  <div class="sub-menu">
+    <a href="#" routerLinkActive="active" routerLink="/profile">
+      <button type="button" class=" btn sub-menu__profile-btn">Profile</button>
+    </a>
+    <a href="#" routerLinkActive="active" routerLinkActive="active" routerLink="/add-product" >
+      <button type="button" class=" btn sub-menu__add-new-post-btn">Add new post</button>
+    </a>
+  </div>
+</div>
+
+
+<div *ngIf="!authenticated$"  style="" class="user-block__unauthenticated">
+  <div class="user-block__unauthenticated__greeting_text">
+    Welcome, <a href="" routerLink="/login">login</a> or <a href="" routerLink="/login">register</a> to
+    start!</div>
+  <div class="user-block__unauthenticated__responsive-text">
+    <a href="" routerLink="/login">login</a> or <a href="" routerLink="/login">register</a>
+  </div>
+</div>

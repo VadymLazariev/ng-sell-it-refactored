@@ -7,18 +7,24 @@ import {AdvertItemComponent} from "./advert-item/advert-item.component";
 import {ProductDataService} from "../core/product-data.service";
 import {AdvertResolve} from "../core/advert.resolve";
 import {DetailsComponent} from "../details/details.component";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {AuthInterceptor} from "../core/auth.interceptor";
+import {UiModule} from "../ui/ui.module";
+import {ScrollTopDirective} from "../shared/directives/scroll-top.directive";
+import {InfinityScrollDirective} from "../shared/directives/infinity-scroll.directive";
+import {ScrollTopComponent} from "../shared/scroll-top-button/scroll-top.component";
 
 @NgModule({
   imports: [
     CommonModule,
-    AdvertRoutingModule
+    AdvertRoutingModule,
+    UiModule
   ],
   declarations: [
     AdvertComponent,
     AdvertItemComponent,
-    DetailsComponent
+    DetailsComponent,
+    ScrollTopDirective,
+    ScrollTopComponent,
+    InfinityScrollDirective,
   ],
   providers:[ProductDataService,AdvertResolve,
 ],

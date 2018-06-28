@@ -50,7 +50,7 @@ export class AuthService {
     return this.http.get(ApiUrls.logout).subscribe( () => {
       Cookie.delete('token');
       Cookie.delete('user');
-      this.router.navigate(['/products']);
+      this.router.navigate(['/advert']);
       this.authenticated$.next(false);
     });
   }
@@ -72,7 +72,6 @@ export class AuthService {
   }
 
   googleAuthentication( token) {
-
     const body = {
       access_token: token,
     };

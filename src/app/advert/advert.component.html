@@ -1,5 +1,8 @@
+<app-header></app-header>
 <div class="home-page-row"  infinite-scroll (scrolledToBottom)="loadMoreProducts()"  >
   <div class="column" *ngFor="let product of productList">
     <app-advert-item [productItem]="product"></app-advert-item>
   </div>
 </div>
+<app-footer></app-footer>
+<app-scroll-top-button></app-scroll-top-button>

@@ -1,95 +1,48 @@
 @import "../../sass/variables";
 
 
-body{
-  display: flex;
-  min-height: 100%;
+
+header{
   position: relative;
-  padding-bottom: 30px;
-}
-.header{
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: space-between;
+  display:flex;
   align-items: flex-start;
-}
-.user-box{
-  display: flex;
-  justify-content: space-around;
-  background-color: #00b3be;
-  height: 60px;
-  width: 25%;
-  color: white;
-  transition: height 1s;
-}
-
-.submenu{
-  display: block;
-  margin-top: 100px;
   justify-content: space-between;
-  align-items: flex-end;
 
 }
 
-.user-box:hover {
-  height: 150px;
-  border-bottom: 2px solid black;
-  border-left: 1px solid black;
-
-}
-
-.user-box p{
-  align-self: center;
-}
-.user-image{
-  align-self: center;
-  height: 40px;
-}
-.sign-out{
-  align-self: center;
-}
-
-.input-container{
-
+.logo{
+  flex: 0 0 auto;
+  display: block;
+  margin: 9px 0 9px 50px;
 }
 
 .search{
-  border: none;
-  border-bottom: 1px #00b3be solid;
-  height: 30px;
-  margin-top:3%;
-  width: 400px;
-}
-
-
-@media screen and (max-width:770px)  {
-  .search{
-    width: 150px;
+  flex: 1 0 auto;
+  font-size: 14px;
+  max-width: 45%;
+  margin-top: 15px;
+  &__form{
+    border-bottom: 1px solid $main-color
   }
-  .user-box p{
-    margin-left: 10px;
-    align-self: center;
-  }
-  .user-box {
-    width: 25%;
-  }
-  .user-image{
-    margin-left: 0;
-  }
-  .sign-out{
-    margin-right: 0;
-  }
-}
-
-
-@media screen and (max-width:480px){
-  .user-box p{
-    display: none;
-  }
-  .user-box {
+  &__input{
+    width: calc(100% - 20px);
     background-color: transparent;
-    justify-content: flex-end;
+    border: none;
+  }
+  &__label{
+    width: 100%;
   }
 }
 
 
+
+@media screen and (max-width: 800px){
+  .logo{
+    flex: 0 0 auto;
+    display: block;
+    margin: 0;
+  }
+  .search__input{
+
+  }
+}

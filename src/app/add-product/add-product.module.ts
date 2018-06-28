@@ -7,13 +7,15 @@ import {AuthService} from "../core/auth.service";
 import {ProfileService} from "../core/profile.service";
 import {SessionService} from "../core/session.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {UiModule} from "../ui/ui.module";
 
 @NgModule({
   imports: [
     CommonModule,
     AddProductRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UiModule
   ],
   declarations: [
     AddProductComponent

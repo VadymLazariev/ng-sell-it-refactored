@@ -9,22 +9,25 @@ import {ProductDataService} from "./core/product-data.service";
 import {AuthInterceptor} from "./core/auth.interceptor";
 import {SessionService} from "./core/session.service";
 import {AuthService} from "./core/auth.service";
-import { AddProductComponent } from './add-product/add-product.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ErrorHandlerComponent } from './shared/error-handler/error-handler.component';
+import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not-found.component";
+import {AuthGuard} from "./core/auth.guard";
+import {GuestGuard} from "./core/guest.guard";
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    UiModule
+    UiModule,
+
   ],
-  providers: [ProductDataService, SessionService,  AuthService,   {
+  providers: [ProductDataService, SessionService,  AuthService, AuthGuard,GuestGuard,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

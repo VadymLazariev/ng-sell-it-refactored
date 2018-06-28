@@ -1,0 +1,138 @@
+@import "../../../sass/variables";
+
+
+
+.user-block{
+  width: 400px;
+  background-color: #00b3be;
+  position: relative;
+  height: 60px;
+  &__unauthenticated{
+    width: 400px;
+    background-color: #00b3be;
+    position: relative;
+    height: 60px;
+    &__greeting_text{
+      display: block;
+      color: white;
+      font-size:16px;
+      font-weight: bold;
+      font-family: $main-font;
+      position:relative;
+      text-align: center;
+      top: 20px;
+    }
+    &__responsive-text{
+      display: none;
+    }
+  }
+
+}
+
+
+
+.profile{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px;
+  &__user-name{
+    margin-top: 10px;
+    color: white;
+    font-size:15px;
+    font-weight: bold;
+  }
+  &__avatar{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  }
+  &__sign-out{
+    opacity: 1;
+
+  }
+}
+
+.profile__sign-out:hover{
+  opacity: 0.5;
+}
+
+
+.user-block:hover{
+  height: 100px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  .sub-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    a{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:50%;
+      text-decoration: none;
+    }
+    &__profile-btn{
+      background-color: $main-color;
+      font-size: 16px;
+      font-weight: bold;
+      &:hover{
+        border-right: 2px solid black;
+      }
+
+    }
+    &__add-new-post-btn{
+      background-color: $main-color;
+      font-size: 16px;
+      font-weight: bold;
+      &:hover{
+        border-right: 2px solid black;
+      }
+
+    }
+  }
+}
+
+
+
+
+.sub-menu{
+  display: none;
+}
+
+
+@media screen and (max-width: 640px){
+  .profile{
+    padding: 0;
+  }
+  .user-block{
+    width: 70%;
+    padding: 0;
+    background-color: transparent;
+  }
+  .profile__user-name{
+    margin-top: 0;
+    display: none;
+  }
+  .user-block:hover{
+    display: none;
+  }
+  .user-block__unauthenticated{
+    width: 100%;
+  }
+  .user-block__unauthenticated__greeting_text{
+    display:none;
+  }
+  .user-block__unauthenticated__responsive-text{
+    display: block;
+    color: white;
+    font-size:16px;
+    font-weight: bold;
+    font-family: $main-font;
+    position:relative;
+    text-align: center;
+    top: 0px;
+  }
+}
+

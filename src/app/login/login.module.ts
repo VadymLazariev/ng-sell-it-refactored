@@ -9,7 +9,7 @@ import {SessionService} from "../core/session.service";
 import {ProfileService} from "../core/profile.service";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptor} from "../core/auth.interceptor";
-import {ErrorHandlerComponent} from "../shared/error-handler/error-handler.component";
+import {ErrorHandlerComponent} from "../shared/components/error-handler/error-handler.component";
 
 @NgModule({
   imports: [

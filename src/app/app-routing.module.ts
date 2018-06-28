@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not-found.component";
+import {GuestGuard} from "./core/guest.guard";
+import {AuthGuard} from "./core/auth.guard";
 
 const routes: Routes = [
   {
@@ -8,19 +11,23 @@ const routes: Routes = [
   },
   {
     path:'login' ,
-    loadChildren: './login/login.module#LoginModule'
+    loadChildren: './login/login.module#LoginModule',
+    canActivate: [GuestGuard]
   },
   {
     path:'profile' ,
-    loadChildren: './profile/profile.module#ProfileModule'
+    loadChildren: './profile/profile.module#ProfileModule',
+    canActivate: [AuthGuard]
   },
   {
     path:'add-product' ,
-    loadChildren: './add-product/add-product.module#AddProductModule'
+    loadChildren: './add-product/add-product.module#AddProductModule',
+    canActivate: [AuthGuard]
   },
   {
     path:'**',
-    loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule'
+    component:PageNotFoundComponent
+
   },
   {
     path:'', redirectTo: 'advert', pathMatch: 'full'

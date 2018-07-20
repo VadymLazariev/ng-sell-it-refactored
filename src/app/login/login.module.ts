@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { LoginRoutingModule } from './login-routing.module';
+import {LoginRoutingModule} from './login-routing.module';
 import {LoginComponent} from "./login.component";
 import {AuthService} from "../core/auth.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -22,6 +22,7 @@ import {ErrorHandlerComponent} from "../shared/components/error-handler/error-ha
     LoginComponent,
     ErrorHandlerComponent
   ],
-  providers:[AuthService,SessionService,ProfileService,],
+  providers: [AuthService, SessionService, ProfileService,],
 })
-export class LoginModule { }
+export class LoginModule {
+}

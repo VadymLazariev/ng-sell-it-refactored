@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { ProfileRoutingModule } from './profile-routing.module';
+import {ProfileRoutingModule} from './profile-routing.module';
 import {ProfileComponent} from "./profile.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "../core/auth.service";
@@ -20,6 +20,7 @@ import {UiModule} from "../ui/ui.module";
   declarations: [
     ProfileComponent,
   ],
-  providers:[AuthService,ProfileService,SessionService]
+  providers: [AuthService, ProfileService, SessionService]
 })
-export class ProfileModule { }
+export class ProfileModule {
+}

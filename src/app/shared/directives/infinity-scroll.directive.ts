@@ -7,7 +7,8 @@ export class InfinityScrollDirective {
 
   @Output() scrolledToBottom = new EventEmitter();
 
-  constructor(private element:ElementRef) { }
+  constructor(private element: ElementRef) {
+  }
 
   @HostListener('window:scroll')
   public onScroll() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {AuthService} from "../core/auth.service";
 import {ActivatedRoute} from "@angular/router";
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   signUpForm: FormGroup;
   isLoginButton = true;
   public errors: ErrorEvent;
-  public  errorMessage;
+  public errorMessage;
 
 
   constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute) {
@@ -29,30 +29,31 @@ export class LoginComponent implements OnInit {
 
   createSignUpForm() {
     this.signUpForm = this.fb.group({
-      username: ['', Validators.compose([Validators.required,  Validators.minLength(8),
+      username: ['', Validators.compose([Validators.required, Validators.minLength(8),
         Validators.maxLength(15)])],
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(6),],)],
       passwords: this.fb.group(
         {
-          password1:['',Validators.compose([Validators.required, Validators.minLength(8)
-            ,Validators.pattern('^[a-zA-Z0-9_.-]*$')
-            ,Validators.minLength(6)])] ,
-          password2:['',Validators.compose([Validators.required,Validators.minLength(8)])] ,
+          password1: ['', Validators.compose([Validators.required, Validators.minLength(8)
+            , Validators.pattern('^[a-zA-Z0-9_.-]*$')
+            , Validators.minLength(6)])],
+          password2: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
         },
-        {validator:this.matchValidator})
+        {validator: this.matchValidator})
     });
   }
 
-  get password1(){
+  get password1() {
     return this.signUpForm.get('passwords.password1')
   }
-  get password2(){
+
+  get password2() {
     return this.signUpForm.get('passwords.password2')
   }
 
   createSignInForm() {
     this.signInForm = this.fb.group({
-      email: ['', Validators.compose( [Validators.required, Validators.email,Validators.minLength(6)])],
+      email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(6)])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
     });
   }
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
     console.log(this.signUpForm.value)
     const signUpBody = this.initializeBody();
     console.log(signUpBody);
-    if(this.signUpForm.valid) {
+    if (this.signUpForm.valid) {
       this.authService.signUp(signUpBody).pipe().subscribe(data => console.log(data),
         (error: any) => {
           this.errors = error;
@@ -73,14 +74,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmitSignIn()  {
-    if(this.signInForm.valid){
-    this.authService.signIn(this.signInForm.value).pipe().subscribe(data => console.log(data),
-      (error: any) => {
-        this.errors = error;
-        this.errorMessage = Object.values(this.errors.error)[0];
-      }
-    );
+  onSubmitSignIn() {
+    if (this.signInForm.valid) {
+      this.authService.signIn(this.signInForm.value).pipe().subscribe(data => console.log(data),
+        (error: any) => {
+          this.errors = error;
+          this.errorMessage = Object.values(this.errors.error)[0];
+        }
+      );
       this.signInForm.reset();
     }
   }
@@ -102,13 +103,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  initializeBody(){
+  initializeBody() {
 
-    const body: ISignUp  = {
+    const body: ISignUp = {
       email: this.signUpForm.controls.email.value,
       username: this.signUpForm.controls.username.value,
-      password1:this.signUpForm.controls.passwords.value.password1,
-      password2:this.signUpForm.controls.passwords.value.password2,
+      password1: this.signUpForm.controls.passwords.value.password1,
+      password2: this.signUpForm.controls.passwords.value.password2,
     };
     return body;
   }
@@ -117,15 +118,14 @@ export class LoginComponent implements OnInit {
 
     let password1 = group.controls.password1.value;
     let password2 = group.controls.password2.value;
-    console.log(password1,password2);
+    console.log(password1, password2);
     if (password1 !== password2) {
-      return{
+      return {
         mismatch: true
       };
     }
     return null;
   }
-
 
 
 }

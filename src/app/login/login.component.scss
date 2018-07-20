@@ -1,10 +1,11 @@
 @import "../sass/variables";
-.login-page{
+
+.login-page {
   display: grid;
   grid-template-columns: 73% 27%;
   height: 100%;
 
-  .main-picture{
+  .main-picture {
     background-image: url("../../assets/img/login-right-section-image.png");
     height: 100%;
     background-repeat: no-repeat;
@@ -14,10 +15,10 @@
 
 }
 
-.login-content{
+.login-content {
   background-color: $main-color;
 
-  .logo{
+  .logo {
     position: relative;
     text-align: center;
     margin-top: 25%;
@@ -25,7 +26,7 @@
 
 }
 
-.sign-in-btn{
+.sign-in-btn {
   width: 45%;
   height: 4%;
   margin-left: 2%;
@@ -33,7 +34,8 @@
   font-size: 100%;
 
 }
-.sign-up-btn{
+
+.sign-up-btn {
   width: 45%;
   height: 4%;
   margin-left: 4%;
@@ -42,78 +44,83 @@
 
 }
 
-.sign-in-btn,.sing-up-btn{
+.sign-in-btn, .sing-up-btn {
   display: inline-block;
   cursor: pointer;
   margin-top: 50%;
 
 }
 
-form{
+form {
   position: relative;
   text-align: center;
   margin-top: 70px;
 }
-input{
+
+input {
   width: 95%;
   height: 40px;
   background-color: $main-color;
   border: none;
   border-bottom: white 3px solid;
   color: white;
-  margin-top:40px;
+  margin-top: 40px;
 }
-.submit-btn{
+
+.submit-btn {
   width: 95%;
   margin-top: 50px;
   margin-left: 2%;
   padding: 10px;
 }
 
-::placeholder{
+::placeholder {
   color: white;
   font-family: $main-font;
   padding-left: 15px;
 }
-.login-btn{
+
+.login-btn {
   width: 100%;
 }
-@media screen and (max-width: 800px){
-  .login-page{
+
+@media screen and (max-width: 800px) {
+  .login-page {
     grid-template-columns: 100%;
-    .main-picture{
+    .main-picture {
       display: none;
     }
   }
-  .login-content{
+  .login-content {
     width: 100%;
     height: auto;
-    .logo{
+    .logo {
       position: relative;
       text-align: center;
-      img{
+      img {
         width: 50%;
       }
     }
   }
 
-  .submit-btn{
+  .submit-btn {
     height: 50px;
     font-size: 25px;
   }
 }
 
-.error{
-  color:red;
+.error {
+  color: red;
   font-size: 15px;
   border: red 1px solid;
 }
-.error-text{
-  color:red;
+
+.error-text {
+  color: red;
   display: block;
 }
 
-._disabled_text{
+._disabled_text {
   display: none;
-  float:left;
+  float: left;
 }

@@ -5,13 +5,13 @@ import {ProductDataService} from "./product-data.service";
 import {Injectable} from "@angular/core";
 
 @Injectable()
-export class AdvertResolve implements Resolve<Product>{
-  constructor(private productService:ProductDataService){
+export class AdvertResolve implements Resolve<Product> {
+  constructor(private productService: ProductDataService) {
 
   }
 
-  public resolve( route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
-    :Observable<Product> | Promise <Product> | Product {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
+    : Observable<Product> | Promise<Product> | Product {
     return this.productService.getProduct(route.params.id)
   }
 }

@@ -1,9 +1,9 @@
 import {Product} from "./models/product";
 
 export class DataResponse {
-  results : Product[];
+  results: Product[];
 
-  constructor(json:any){
-      this.results = json.results;
+  constructor(json: any) {
+    this.results = json.results;
   }
 }

@@ -2,12 +2,12 @@
 <div class="container">
   <h1>Edit Profile:</h1>
   <hr>
-  <div class="row"  >
+  <div class="row">
     <div class="col-md-3" [formGroup]="profileForm">
       <div class="text-center">
         <img src="{{user.avatar}}" class="avatar img-circle" alt="avatar">
         <h6>Upload a different photo...</h6>
-        <input  (change)="onChange($event)" type="file" class="form-control" formControlName="avatar">
+        <input (change)="onChange($event)" type="file" class="form-control" formControlName="avatar">
       </div>
     </div>
     <div class="col-md-9 personal-info">
@@ -16,7 +16,7 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">First name:</label>
           <div class="col-lg-8">
-            <input class="form-control" type="text"  formControlName="first_name">
+            <input class="form-control" type="text" formControlName="first_name">
           </div>
         </div>
         <div class="form-group">
@@ -34,7 +34,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Username:</label>
           <div class="col-md-8">
-            <input class="form-control" type="text" formControlName="username" >
+            <input class="form-control" type="text" formControlName="username">
           </div>
         </div>
         <div class="form-group">

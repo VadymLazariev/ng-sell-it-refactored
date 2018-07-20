@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AdvertRoutingModule } from './advert-routing.module';
-import { AdvertComponent } from './advert.component';
+import {AdvertRoutingModule} from './advert-routing.module';
+import {AdvertComponent} from './advert.component';
 import {AdvertItemComponent} from "./advert-item/advert-item.component";
 import {ProductDataService} from "../core/product-data.service";
 import {AdvertResolve} from "../core/advert.resolve";
@@ -26,8 +26,9 @@ import {ScrollTopComponent} from "../shared/scroll-top-button/scroll-top.compone
     ScrollTopComponent,
     InfinityScrollDirective,
   ],
-  providers:[ProductDataService,AdvertResolve,
-],
-  exports:[AdvertComponent,AdvertItemComponent]
+  providers: [ProductDataService, AdvertResolve,
+  ],
+  exports: [AdvertComponent, AdvertItemComponent]
 })
-export class AdvertModule { }
+export class AdvertModule {
+}

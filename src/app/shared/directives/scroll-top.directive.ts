@@ -9,20 +9,20 @@ export class ScrollTopDirective {
   }
 
   @HostListener('click')
-  public  onClick(){
-    window.scroll({top:0,behavior:"smooth"});
+  public onClick() {
+    window.scroll({top: 0, behavior: "smooth"});
   }
 
   @HostListener("window:scroll", [])
-  public onScroll(){
-    if(window.pageYOffset > 100 ){
-        this._displayButton('block');
-    } else{
+  public onScroll() {
+    if (window.pageYOffset > 100) {
+      this._displayButton('block');
+    } else {
       this._displayButton('none');
     }
   }
 
-  private _displayButton(val:string) {
+  private _displayButton(val: string) {
     this.renderer.setStyle(this.element.nativeElement, "display", val);
   }
 }

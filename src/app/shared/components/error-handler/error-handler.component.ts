@@ -10,7 +10,9 @@ export class ErrorHandlerComponent implements OnInit {
   @Input() errors: ErrorEvent;
   @Input() errorMessage;
   @Input() formFieldName;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

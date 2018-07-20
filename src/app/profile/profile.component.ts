@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../core/auth.service";
 
@@ -9,7 +9,7 @@ import {AuthService} from "../core/auth.service";
 })
 export class ProfileComponent implements OnInit {
 
-  constructor( private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.createProfileForm();
   }
 
@@ -23,8 +23,8 @@ export class ProfileComponent implements OnInit {
     avatar: this.authService.sessionService.user.avatar,
   };
 
-  ngOnInit( ) {
-    if (this.user.avatar === null){
+  ngOnInit() {
+    if (this.user.avatar === null) {
       this.user.avatar = "//placehold.it/100"
     }
   }
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     const MIN_LENGTH = 6;
     this.profileForm = this.fb.group({
       first_name: [`${this.user.firstname}`, Validators.pattern('^[a-zA-Z]+$')],
-      last_name: [`${this.user.lastname}`, Validators.pattern('^[a-zA-Z]+$') ],
+      last_name: [`${this.user.lastname}`, Validators.pattern('^[a-zA-Z]+$')],
       email: [`${this.user.email}`],
       username: [`${this.user.username}`, Validators.pattern('^[a-zA-Z0-9_.-]*$')],
       avatar: ['']

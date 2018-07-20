@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductDataService} from "../core/product-data.service";
 import {Product} from "../core/models/product";
@@ -22,12 +22,12 @@ export class DetailsComponent implements OnInit {
   constructor(
     private dataProductsService: ProductDataService,
     private route: ActivatedRoute,
-    private authService:AuthService,
+    private authService: AuthService,
   ) {
   }
 
   ngOnInit() {
-    this.authService.isAuthenticated().subscribe( data => {
+    this.authService.isAuthenticated().subscribe(data => {
       this.authenticated$ = data;
     });
     this.route.data.subscribe(

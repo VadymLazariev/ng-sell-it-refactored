@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AddProductRoutingModule } from './add-product-routing.module';
+import {AddProductRoutingModule} from './add-product-routing.module';
 import {AddProductComponent} from "./add-product.component";
 import {AuthService} from "../core/auth.service";
 import {ProfileService} from "../core/profile.service";
@@ -20,6 +20,7 @@ import {UiModule} from "../ui/ui.module";
   declarations: [
     AddProductComponent
   ],
-  providers:[AuthService,ProfileService,SessionService]
+  providers: [AuthService, ProfileService, SessionService]
 })
-export class AddProductModule { }
+export class AddProductModule {
+}

@@ -20,7 +20,8 @@ export class AuthService {
               private http: HttpClient,
               private router: Router,
               public profileService: ProfileService,
-  ) {}
+  ) {
+  }
 
 
   public authenticated$ = new BehaviorSubject<boolean>(this.hasToken());
@@ -31,8 +32,8 @@ export class AuthService {
 
   signIn(signInModel: ISignIn): Observable<Object> {
     return this.http.post(ApiUrls.login, signInModel).pipe(
-      tap( (data: any) => {
-        if ( this.authenticated$ === undefined) {
+      tap((data: any) => {
+        if (this.authenticated$ === undefined) {
           this.authenticated$ = new BehaviorSubject<boolean>(this.hasToken());
           this.authenticated$.next(true);
         } else {
@@ -42,12 +43,12 @@ export class AuthService {
         this.sessionService.user = data.user;
         this.profileService.profile$.next(data.user);
         this.router.navigate(['/advert']);
-      } )
+      })
     );
   }
 
   signOut(): Subscription {
-    return this.http.get(ApiUrls.logout).subscribe( () => {
+    return this.http.get(ApiUrls.logout).subscribe(() => {
       Cookie.delete('token');
       Cookie.delete('user');
       this.router.navigate(['/advert']);
@@ -64,19 +65,19 @@ export class AuthService {
     return !!this.sessionService.token;
   }
 
-  verifyEmail(userKey: string): Observable<Object>  {
+  verifyEmail(userKey: string): Observable<Object> {
     const body = {
       key: userKey
     };
     return this.http.post(ApiUrls.emailVerify, body);
   }
 
-  googleAuthentication( token) {
+  googleAuthentication(token) {
     const body = {
       access_token: token,
     };
 
-    return this.http.post(ApiUrls.authGoogle, body );
+    return this.http.post(ApiUrls.authGoogle, body);
   }
 
 }

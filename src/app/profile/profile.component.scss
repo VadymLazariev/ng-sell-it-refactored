@@ -1,18 +1,18 @@
 @import "../sass/variables";
+
 .btn {
   opacity: 1;
   background-color: $main-color;
-  color:white;
+  color: white;
   font-size: 15px;
   font-family: $main-font;
 }
 
-
-.btn:hover{
+.btn:hover {
   opacity: 0.5;
 }
 
-img{
+img {
   height: 100px;
 }
 

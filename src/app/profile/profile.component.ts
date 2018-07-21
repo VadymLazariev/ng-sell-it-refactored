@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
 
   createProfileForm() {
     this.checkValue();
-    const MIN_LENGTH = 6;
     this.profileForm = this.fb.group({
       first_name: [`${this.user.firstname}`, Validators.pattern('^[a-zA-Z]+$')],
       last_name: [`${this.user.lastname}`, Validators.pattern('^[a-zA-Z]+$')],
@@ -55,14 +54,11 @@ export class ProfileComponent implements OnInit {
   }
 
   onChange(e) {
-    console.log(e.target.files);
     for (let i = 0; i < e.target.files.length; i++) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[i]);
       fileReader.onload = () => {
-        console.log(fileReader.result);
         this.profileForm.value.avatar = fileReader.result;
-        console.log('this.profileForm.value.avatar');
       };
     }
 

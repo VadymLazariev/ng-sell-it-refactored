@@ -26,7 +26,6 @@ export class ProfileService {
       tap((data: any) => {
         this.sessionService.user = data;
         this.profile$.next(data);
-        console.log('PATCH:', data);
       }));
   }
 }

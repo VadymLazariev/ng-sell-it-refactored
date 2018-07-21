@@ -26,8 +26,7 @@ export class ProductDataService {
           response.results.forEach(
             item => {
               this.isNoImage(item);
-              result.push(new Product(item))
-              console.log('ITEM:' + item)
+              result.push(new Product(item));
             }
           );
           return result;

@@ -17,7 +17,7 @@ export class Image {
 }
 
 export class Product {
-  id: number;
+  pk: number;
   owner: Owner;
   images: Image[];
   theme: string;
@@ -28,11 +28,11 @@ export class Product {
   location: string;
   category: string;
   activated_at: string;
-  isActive: boolean
+  isActive: boolean;
 
 
   constructor(json: any) {
-    this.id = json.pk;
+    this.pk = json.pk;
     this.owner = json.owner;
     this.price = json.price;
     this.text = json.text;

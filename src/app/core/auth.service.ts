@@ -16,7 +16,6 @@ import {ApiUrls} from "./api-urls";
 export class AuthService {
 
   constructor(public sessionService: SessionService,
-              private route: ActivatedRoute,
               private http: HttpClient,
               private router: Router,
               public profileService: ProfileService,
@@ -25,6 +24,10 @@ export class AuthService {
 
 
   public authenticated$ = new BehaviorSubject<boolean>(this.hasToken());
+
+  userSignOut() {
+
+  }
 
   signUp(signUpModel: ISignUp): Observable<Object> {
     return this.http.post(ApiUrls.registration, signUpModel);
@@ -48,9 +51,10 @@ export class AuthService {
   }
 
   signOut(): Subscription {
-    return this.http.get(ApiUrls.logout).subscribe(() => {
+    return this.http.get(ApiUrls.logout).pipe().subscribe(() => {
       Cookie.delete('token');
       Cookie.delete('user');
+      window.localStorage.removeItem('token');
       this.router.navigate(['/advert']);
       this.authenticated$.next(false);
     });
@@ -65,14 +69,14 @@ export class AuthService {
     return !!this.sessionService.token;
   }
 
-  verifyEmail(userKey: string): Observable<Object> {
+  verifyEmail(userKey: string): Observable<any> {
     const body = {
       key: userKey
     };
     return this.http.post(ApiUrls.emailVerify, body);
   }
 
-  googleAuthentication(token) {
+  googleAuthentication(token) : Observable<any> {
     const body = {
       access_token: token,
     };

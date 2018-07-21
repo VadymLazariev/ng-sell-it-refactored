@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {SessionService} from "./session.service";
 import {Owner} from "./models/product";
+import {ApiUrls} from "./api-urls";
 
 
 describe('ProfileService', () => {
@@ -29,19 +30,25 @@ describe('ProfileService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should update user with PATCH method', () => {
-        const userMock : Owner = {
-          id: 1,
-          username: 'JohnDoe' ,
-          email: 'johndoe@gmail.com',
-          first_name: 'Jon',
-          last_name: 'Doe',
-          avatar: 'qwerty.jpg',
-          location: '',
-          color_scheme: "#321254",
-          language: "en"
-        };
+  it('should update user via PATCH', () => {
+    const userMock: Owner = {
+      id: 142,
+      username: "my name",
+      email: "alkovalzp@ukr.net",
+      first_name: "",
+      last_name: "",
+      avatar: "http://light-it-04.tk/media/avatars/257aa7bb-b5f.png",
+      location: null,
+      color_scheme: null,
+      language: null
+    };
+    const testingUrl = ApiUrls.profile;
 
-        service.patch(userMock);
+    service.patch(userMock).subscribe(user => {
+      expect(user).toEqual(userMock);
+    });
+    const request = httpMock.expectOne(testingUrl);
+    expect(request.request.method).toBe('PATCH');
+    request.flush(userMock);
   });
 });

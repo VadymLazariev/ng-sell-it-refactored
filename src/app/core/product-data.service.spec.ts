@@ -36,42 +36,40 @@ describe('Product Data Service', () => {
   });
 
   it(`should retrieve a product data by Id from the API via GET`, () => {
-    const fakeId = 181;
-    const productMock: Product = {
-      pk: 181,
-      owner: {
-        id: 142,
-        username: "my name",
-        email: "alkovalzp@ukr.net",
-        first_name: "",
-        last_name: "",
-        avatar: "http://light-it-04.tk/media/avatars/257aa7bb-b5f.png",
-        location: null,
-        color_scheme: null,
-        language: null
-      },
-      images: [],
-      theme: 'new',
-      price: 0,
-      currency: 1,
-      text: null,
-      contractPrice: false,
-      location: null,
-      category: null,
-      activated_at: "2018-06-21T15:35:18.527734Z",
-      isActive: true,
-    };
-    service.getProduct(fakeId).subscribe(data => {
-      expect(data).toEqual(productMock);
+    const productMock: Product = productsMock.results[0] as Product;
+    service.getProduct(productMock.pk).subscribe(product => {
+      expect(product).toEqual(productMock);
     });
-    const request = httpMock.expectOne(ApiUrls.adverts + fakeId + '/');
+    const request = httpMock.expectOne(ApiUrls.adverts + productMock.pk + '/');
     expect(request.request.method).toBe('GET');
     request.flush(productMock);
   });
 
-  it(`should retrieve a list of products data by Id from the API via GET`, () => {
 
+  it(`should retrieve a list of products  from the API via GET`, () => {
+    const products = productsMock.results as Product[];
+    const offset = 0;
+    const limit = 12;
+    const testingUrl = `${ApiUrls.adverts}?limit=${limit}&offset=${offset}`;
+    service.getProductList(limit,offset).subscribe( productList => {
+      expect(productList).toEqual(products);
+    });
+
+    const request = httpMock.expectOne(testingUrl);
+    expect(request.request.method).toBe('GET');
+    request.flush(products);
   });
 
+ it('should create new product via POST ',  ()=> {
+    const productMock: Product = productsMock.results[0] as Product;
+    const testingUrl = ApiUrls.adverts;
+    service.createProduct(productMock,null).subscribe(data=> {
+      expect(data).toEqual(productMock);
+    })
+
+    const request = httpMock.expectOne(testingUrl);
+    expect(request.request.method).toBe('POST');
+    request.flush(productMock);
+  });
 });
 

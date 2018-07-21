@@ -13,7 +13,7 @@ export class ProductDataService {
   constructor(private  http: HttpClient) {
   }
 
-  getProductList(limit: number = 4, offset: number = 0): Observable<Product[]> {
+  getProductList(limit: number , offset: number ): Observable<Product[]> {
     const params = {
       limit: limit.toString(),
       offset: offset.toString()

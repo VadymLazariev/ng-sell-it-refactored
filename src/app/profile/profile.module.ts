@@ -8,6 +8,7 @@ import {AuthService} from "../core/auth.service";
 import {ProfileService} from "../core/profile.service";
 import {SessionService} from "../core/session.service";
 import {UiModule} from "../ui/ui.module";
+import {AppErrorHandlerModule} from "../shared/components/error-handler/app-error-handler.module";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {UiModule} from "../ui/ui.module";
     ProfileRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    UiModule
+    UiModule,
+    AppErrorHandlerModule
   ],
   declarations: [
     ProfileComponent,

@@ -2,7 +2,11 @@
 <main class="main">
   <div class="main-wrap">
     <div class="main-wrap-picture-block">
-      <img src="{{product?.images[0]?.file}}" alt="">
+      <carousel>
+        <slide *ngFor="let image of product?.images">
+          <img [src]="image.file"  alt="">
+        </slide>
+      </carousel>
     </div>
     <div class="main-description">
       <h3>{{product?.theme}}</h3>

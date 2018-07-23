@@ -11,17 +11,18 @@ import {ApiUrls} from "./api-urls";
 @Injectable()
 export class ProfileService {
 
-  profile$ = new BehaviorSubject(false);
+ public profile$ = new BehaviorSubject<Owner>(null);
 
   constructor(private http: HttpClient, private sessionService: SessionService) {
   }
 
 
-  get profile(): Observable<Object> {
+  get profile() {
     return this.profile$.asObservable();
   }
 
-  patch(userModel: Owner): Observable<Response> {
+
+  patch(userModel: Owner): Observable<any> {
     return this.http.patch(ApiUrls.profile, userModel).pipe(
       tap((data: any) => {
         this.sessionService.user = data;

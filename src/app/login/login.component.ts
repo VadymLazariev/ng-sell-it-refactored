@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {AuthService} from "../core/auth.service";
+import {AuthService as ServiceAuth} from "../core/auth.service";
 import {ActivatedRoute} from "@angular/router";
-import {RegexPattern} from "../core/regex-pattern";
 import {ISignUp} from "../core/models/isign-up";
-import {map} from "rxjs/operators";
-import {group} from "@angular/animations";
+
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular5-social-login';
 
 @Component({
   selector: 'app-login',
@@ -22,9 +25,29 @@ export class LoginComponent implements OnInit {
   public errorMessage;
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute) {
+  constructor(private socialAuthService: AuthService,
+              private fb: FormBuilder,
+              private authService: ServiceAuth,
+              private route: ActivatedRoute) {
     this.createSignInForm();
     this.createSignUpForm();
+  }
+
+  public socialSignIn(socialPlatform: string) {
+    let socialPlatformProvider;
+    if ( socialPlatform === 'google') {
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        console.log(socialPlatform + ' sign in data : '  , userData);
+        // Now sign-in with userData
+        this.authService.googleAuthentication(userData.token).subscribe(data => {
+          console.log(data);
+        });
+      }
+    );
   }
 
   createSignUpForm() {
@@ -59,15 +82,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitSignUp() {
-    console.log(this.signUpForm.value)
     const signUpBody = this.initializeBody();
-    console.log(signUpBody);
     if (this.signUpForm.valid) {
       this.authService.signUp(signUpBody).pipe().subscribe(data => console.log(data),
         (error: any) => {
           this.errors = error;
           this.errorMessage = Object.values(this.errors.error)[0];
-          console.log(this.errors)
         }
       );
       this.signUpForm.reset();
@@ -97,9 +117,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     const key = this.route.snapshot.queryParams['key'];
-    console.log(key);
     this.authService.verifyEmail(key).pipe().subscribe(data => {
-      console.log(data);
     });
   }
 
@@ -115,10 +133,8 @@ export class LoginComponent implements OnInit {
   }
 
   private matchValidator(group: FormGroup): ValidationErrors {
-
     let password1 = group.controls.password1.value;
     let password2 = group.controls.password2.value;
-    console.log(password1, password2);
     if (password1 !== password2) {
       return {
         mismatch: true
@@ -126,6 +142,4 @@ export class LoginComponent implements OnInit {
     }
     return null;
   }
-
-
 }

@@ -17,12 +17,19 @@ export class SessionService {
   }
 
   get user() {
-    return JSON.parse(localStorage.getItem('token'));
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   set user(value) {
-    localStorage.setItem('token', JSON.stringify(value));
+    localStorage.setItem('user', JSON.stringify(value));
   }
 
+  removeCookieToken(){
+    Cookie.delete('token');
+  }
+
+  removeLocalToken(){
+    localStorage.removeItem('user')
+  }
 
 }

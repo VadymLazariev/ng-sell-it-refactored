@@ -18,3 +18,18 @@ img {
 
 
 
+.error {
+  color: red;
+  font-size: 15px;
+  border: red 1px solid;
+}
+
+.error-text {
+  color: red;
+  display: block;
+}
+
+._disabled_text {
+  display: none;
+  float: left;
+}

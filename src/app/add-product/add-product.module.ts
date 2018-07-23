@@ -8,6 +8,7 @@ import {ProfileService} from "../core/profile.service";
 import {SessionService} from "../core/session.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UiModule} from "../ui/ui.module";
+import {AppErrorHandlerModule} from "../shared/components/error-handler/app-error-handler.module";
 
 @NgModule({
   imports: [
@@ -15,10 +16,11 @@ import {UiModule} from "../ui/ui.module";
     AddProductRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    UiModule
+    UiModule,
+    AppErrorHandlerModule
   ],
   declarations: [
-    AddProductComponent
+    AddProductComponent,
   ],
   providers: [AuthService, ProfileService, SessionService]
 })

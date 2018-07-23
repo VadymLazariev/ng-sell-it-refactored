@@ -29,14 +29,18 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-
+  /* Validators.compose([Validators.required, Validators.minLength(8),
+                        Validators.maxLength(15)])]*/
   createProfileForm() {
     this.checkValue();
     this.profileForm = this.fb.group({
-      first_name: [`${this.user.firstname}`, Validators.pattern('^[a-zA-Z]+$')],
-      last_name: [`${this.user.lastname}`, Validators.pattern('^[a-zA-Z]+$')],
+      first_name: [`${this.user.firstname}`, Validators.compose([Validators.pattern('^[a-zA-Z]+$'),
+        Validators.minLength(2),Validators.required])],
+      last_name: [`${this.user.lastname}`, Validators.compose([Validators.pattern('^[a-zA-Z]+$'),
+        Validators.minLength(2),Validators.required]) ],
       email: [`${this.user.email}`],
-      username: [`${this.user.username}`, Validators.pattern('^[a-zA-Z0-9_.-]*$')],
+      username: [`${this.user.username}`, Validators.compose([Validators.pattern('^[a-zA-Z0-9_.-]*$'),
+        Validators.minLength(5), Validators.maxLength(15),Validators.required],),],
       avatar: ['']
     });
   }

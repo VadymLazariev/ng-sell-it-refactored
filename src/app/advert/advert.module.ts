@@ -11,12 +11,14 @@ import {UiModule} from "../ui/ui.module";
 import {ScrollTopDirective} from "../shared/directives/scroll-top.directive";
 import {InfinityScrollDirective} from "../shared/directives/infinity-scroll.directive";
 import {ScrollTopComponent} from "../shared/scroll-top-button/scroll-top.component";
+import {CarouselModule} from "ngx-bootstrap";
 
 @NgModule({
   imports: [
     CommonModule,
     AdvertRoutingModule,
-    UiModule
+    UiModule,
+    CarouselModule.forRoot()
   ],
   declarations: [
     AdvertComponent,

@@ -19,19 +19,20 @@
   &__item-info{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     background-color: $main-color;
     color: white;
     padding: 20px;
-    justify-content: space-between;
+
 
   }
   &__item-title{
     font-family:$main-font;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 1vw;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+  /*  overflow: hidden;*/
     width: 100%;
   }
 
@@ -39,6 +40,7 @@
       width:18px;
       height: 18px;
       align-self: center;
+      justify-self: flex-end;
   }
 }
 

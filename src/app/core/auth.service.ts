@@ -1,15 +1,13 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {tap} from 'rxjs/operators';
-import {Cookie} from 'ng2-cookies/ng2-cookies';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {SessionService} from './session.service';
 import {ProfileService} from './profile.service';
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 import {Observable} from "rxjs/internal/Observable";
 import {ISignUp} from "./models/isign-up";
 import {ISignIn} from "./models/isign-in";
-import {Subscription} from "rxjs/internal/Subscription";
 import {ApiUrls} from "./api-urls";
 
 @Injectable()
@@ -25,9 +23,6 @@ export class AuthService {
 
   public authenticated$ = new BehaviorSubject<boolean>(this.hasToken());
 
-  userSignOut() {
-
-  }
 
   signUp(signUpModel: ISignUp): Observable<Object> {
     return this.http.post(ApiUrls.registration, signUpModel);
@@ -50,14 +45,13 @@ export class AuthService {
     );
   }
 
-  signOut(): Subscription {
-    return this.http.get(ApiUrls.logout).pipe().subscribe(() => {
-      Cookie.delete('token');
-      Cookie.delete('user');
-      window.localStorage.removeItem('token');
+  signOut(): Observable<any> {
+    return this.http.get(ApiUrls.logout).pipe( tap((response:any) => {
+      this.sessionService.removeCookieToken();
+      this.sessionService.removeLocalToken();
       this.router.navigate(['/advert']);
       this.authenticated$.next(false);
-    });
+    }));
   }
 
   isAuthenticated(): Observable<boolean> {
@@ -81,7 +75,7 @@ export class AuthService {
       access_token: token,
     };
 
-    return this.http.post(ApiUrls.authGoogle, body);
+    return this.http.post(ApiUrls.authGoogle, body).pipe( tap( (data:any)=> {}));
   }
 
 }

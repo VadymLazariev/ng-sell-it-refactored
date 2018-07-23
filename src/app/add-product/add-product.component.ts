@@ -21,10 +21,11 @@ export class AddProductComponent implements OnInit {
 
   createForm() {
     this.addingProductForm = this.fb.group({
-      theme: ['', Validators.compose([Validators.required, Validators.maxLength(20)
+      theme: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.-]*$')
+        , Validators.maxLength(20)
         , Validators.minLength(5)],)],
       text: ['', Validators.compose([Validators.required, Validators.minLength(5)],)],
-      price: ['', Validators.required],
+      price: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]+$')])],
       currency: ['', Validators.required],
       contract_price: ['',],
       location: ['', Validators.required],

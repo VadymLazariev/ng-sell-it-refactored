@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {concatMap, map, switchMap} from "rxjs/operators";
 import {ApiUrls} from "./api-urls";
-import {DataResponse} from "./data-response";
 import {Product} from "./models/product";
 import {Observable} from "rxjs/internal/Observable";
 import {from} from "rxjs/internal/observable/from";
@@ -13,24 +12,24 @@ export class ProductDataService {
   constructor(private  http: HttpClient) {
   }
 
-  getProductList(limit: number , offset: number ): Observable<Product[]> {
+  getProductList(limit: number = 12, offset: number = 0): Observable<Product[]> {
     const params = {
       limit: limit.toString(),
       offset: offset.toString()
     };
 
-    return this.http.get<Product[]>(ApiUrls.adverts, {params: params})
-      .pipe(
-        map((response: DataResponse) => {
-          let result: Product[] = [];
-          response.results.forEach(
-            item => {
-              this.isNoImage(item);
-              result.push(new Product(item));
-            }
-          );
-          return result;
-        }));
+   return this.http.get<Product[]>(`${ApiUrls.adverts}?limit=${limit}&offset=${offset}`)
+     .pipe(
+       map((response: any) => {
+         let result: Product[] = [];
+         response.results.forEach(
+           item => {
+             this.isNoImage(item);
+             result.push(new Product(item));
+           }
+         );
+         return result;
+       }));
   }
 
   getProduct(id: number): Observable<Product> {

@@ -11,11 +11,12 @@ describe('SessionService', () => {
     });
   });
 
-  it('should be created', inject([SessionService], (sessionService: SessionService) => {
+ it('should be created', inject([SessionService], (sessionService: SessionService) => {
     expect(sessionService).toBeTruthy();
   }));
 
   it('should have a service instance', () => {
     expect(service).toBeDefined();
   });
+
 });

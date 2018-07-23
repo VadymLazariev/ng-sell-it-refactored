@@ -2,37 +2,67 @@
 <form [formGroup]="addingProductForm" class="container" novalidate>
   <div class="form-group">
     <label class="center-block">Theme:
-      <input type="text" class="form-control" formControlName="theme">
+      <input [ngClass]="{'error':addingProductForm.controls.theme.invalid}"  type="text" class="form-control" formControlName="theme">
+      <div *ngIf="addingProductForm.controls.theme.invalid">
+        <app-error-handler [errors]="addingProductForm.controls.theme.errors"
+                           [formFieldName]='theme'></app-error-handler>
+      </div>
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Product image:
-      <input (change)="onChange($event)" type="file" multiple class="form-control" formControlName="images">
+      <input [ngClass]="{'error':addingProductForm.controls.images.invalid}"
+             (change)="onChange($event)" type="file" multiple class="form-control" formControlName="images">
+      <div *ngIf="addingProductForm.controls.images.invalid">
+        <app-error-handler [errors]="addingProductForm.controls.images.errors"
+                           [formFieldName]='images'></app-error-handler>
+      </div>
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Text:
-      <textarea class="form-control" formControlName="text"></textarea>
+      <textarea [ngClass]="{'error':addingProductForm.controls.text.invalid}"
+                class="form-control" formControlName="text"></textarea>
+      <div *ngIf="addingProductForm.controls.text.invalid">
+        <app-error-handler [errors]="addingProductForm.controls.text.errors"
+                           [formFieldName]='text'></app-error-handler>
+      </div>
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Price:
-      <input type="text" class="form-control" formControlName="price">
+      <input [ngClass]="{'error':addingProductForm.controls.price.invalid}"
+             type="text" class="form-control" formControlName="price">
+      <div *ngIf="addingProductForm.controls.price.invalid">
+        <app-error-handler [errors]="addingProductForm.controls.price.errors"
+                           [formFieldName]='price'></app-error-handler>
+      </div>
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Currency:
-      <input type="text" class="form-control" formControlName="currency">
+      <input [ngClass]="{'error':addingProductForm.controls.currency.invalid}"
+             type="text" class="form-control" formControlName="currency">
+      <div *ngIf="addingProductForm.controls.currency.invalid">
+        <app-error-handler [errors]="addingProductForm.controls.currency.errors"
+                           [formFieldName]='currency'></app-error-handler>
+      </div>
     </label>
   </div>
   <div class="form-group">
     <label class="center-block">Location:
-      <input type="text" class="form-control" formControlName="location">
+      <input [ngClass]="{'error':addingProductForm.controls.location.invalid}"
+             type="text" class="form-control" formControlName="location">
+      <div *ngIf="addingProductForm.controls.location.invalid">
+        <app-error-handler [errors]="addingProductForm.controls.location.errors"
+                           [formFieldName]='location'></app-error-handler>
+      </div>
     </label>
   </div>
   <div class="checkbox">
     <label class="center-block">
       <input type="checkbox" formControlName="contract_price">Contract Price
+
     </label>
   </div>
   <div class="checkbox">
@@ -41,6 +71,5 @@
     </label>
   </div>
   <button (click)="onSubmit()" type="submit" class="btn btn-default">Submit</button>
-  <p>Form value: {{ addingProductForm.get('theme').errors| json }}</p>
 </form>
 <app-footer></app-footer>

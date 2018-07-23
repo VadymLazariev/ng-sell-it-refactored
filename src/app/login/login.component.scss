@@ -2,14 +2,14 @@
 
 .login-page {
   display: grid;
-  grid-template-columns: 73% 27%;
+  grid-template-columns: 64% auto;
   height: 100%;
-
+  width:100%;
   .main-picture {
     background-image: url("../../assets/img/login-right-section-image.png");
     height: 100%;
+    width:100%;
     background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
   }
 
@@ -84,6 +84,8 @@ input {
   width: 100%;
 }
 
+
+
 @media screen and (max-width: 800px) {
   .login-page {
     grid-template-columns: 100%;
@@ -107,6 +109,35 @@ input {
     height: 50px;
     font-size: 25px;
   }
+}
+
+
+.social-auth{
+  display: flex;
+  justify-content: center;
+  margin-top: 50%;
+}
+.social-button{
+  background-color: transparent;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 50px;
+
+}
+
+
+.fa-google{
+  color:white;
+  opacity: 1;
+}
+.fa-google:hover{
+  opacity: 0.5;
+  transition: opacity .5s ease-out;
+  -moz-transition: opacity .5s ease-out;
+  -webkit-transition: opacity .5s ease-out;
+  -o-transition: opacity .5s ease-out;
 }
 
 .error {

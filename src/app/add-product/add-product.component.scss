@@ -15,7 +15,7 @@ label {
 input[type=text], textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid;
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 6px;
@@ -46,4 +46,21 @@ input[type=text], textarea {
 .btn:hover {
   opacity: 0.5;
   color: white;
+}
+
+
+.error {
+  color: red;
+  font-size: 15px;
+  border: red 1px solid;
+}
+
+.error-text {
+  color: red;
+  display: block;
+}
+
+._disabled_text {
+  display: none;
+  float: left;
 }

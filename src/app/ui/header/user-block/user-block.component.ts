@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ProfileService} from "../../../core/profile.service";
-import {SessionService} from "../../../core/session.service";
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../core/auth.service";
-import {Observable} from "rxjs/internal/Observable";
-import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
+
 
 @Component({
   selector: 'app-user-block',
@@ -11,16 +8,16 @@ import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
   styleUrls: ['./user-block.component.scss']
 })
 export class UserBlockComponent implements OnInit {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+  }
 
   public authenticated$: boolean;
   public currentUser;
 
   ngOnInit() {
-    this.authService.isAuthenticated().subscribe( data => {
-       this.authenticated$ = data;
+    this.authService.isAuthenticated().subscribe(data => {
+      this.authenticated$ = data;
     });
-    console.log("AUTH",this.authenticated$);
     this.authService.profileService.profile.subscribe(data => {
       this.currentUser = data;
       if (!data) {
@@ -29,7 +26,7 @@ export class UserBlockComponent implements OnInit {
     });
   }
 
-  signOut(){
-    this.authService.signOut();
+  signOut() {
+    this.authService.signOut().subscribe();
   }
 }
